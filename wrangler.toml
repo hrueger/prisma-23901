@@ -8,6 +8,7 @@ compatibility_flags = ["nodejs_compat"]
 binding = "DB" # i.e. available in your Worker on env.DB
 database_name = "prisma-demo-db"
 database_id = "fdba8188-3639-4a5c-87ba-d7ea3711eed4"
+migrations_dir = "./prisma/migrations"
 
 # Variable bindings. These are arbitrary, plaintext strings (similar to environment variables)
 # Docs:

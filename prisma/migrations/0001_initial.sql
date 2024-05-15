@@ -3,7 +3,8 @@ CREATE TABLE "User" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "email" TEXT NOT NULL,
-    "name" TEXT
+    "name" TEXT,
+    "oldField" TEXT
 );
 
 -- CreateTable
@@ -12,13 +13,9 @@ CREATE TABLE "Post" (
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL,
     "title" TEXT NOT NULL,
-    "authorId" INTEGER,
-    CONSTRAINT "Post_authorId_fkey" FOREIGN KEY ("authorId") REFERENCES "User" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+    "authorId" INTEGER NOT NULL,
+    CONSTRAINT "Post_authorId_fkey" FOREIGN KEY ("authorId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
-
--- CreateIndex
-CREATE INDEX "Post_authorId_idx" ON "Post"("authorId");
-
